@@ -1,10 +1,16 @@
+/* ================================
+   ROOT VARIABLES
+================================ */
 :root {
-  --bg-gradient: linear-gradient(135deg, #000000, #1a1a1a);
-  --text-color: #ffffff;
-  --glass-bg: rgb(255,255,255,0.08);
-  --glass-border: rgb(255,255,255,0.18);
+  --bg-gradient: linear-gradient(135deg, #000, #1a1a1a);
+  --text-color: #fff;
+  --glass-bg: rgb(255, 255, 255, 0.08);
+  --glass-border: rgb(255, 255, 255, 0.18);
 }
 
+/* ================================
+   RESET
+================================ */
 * {
   margin: 0;
   padding: 0;
@@ -15,42 +21,18 @@ html {
   scroll-behavior: smooth;
 }
 
-* Background */
+/* ================================
+   BACKGROUND
+================================ */
 body {
   background: var(--bg-gradient);
   color: var(--text-color);
   transition: background 0.6s ease, color 0.4s ease;
 }
 
-/* Glass effect (disabled by default) */
-.glass-enabled .glass,
-.glass-enabled .card,
-.glass-enabled .section,
-.glass-enabled .project-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 8px 32px rgb(0,0,0,0.25);
-  border-radius: 14px;
-}
-
-/* Button styling */
-#bg-toggle {
-  position: fixed;
-  bottom: 80px; /* adjust if needed */
-  right: 20px;
-  padding: 10px 14px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  background: #222;
-  color: #fff;
-  box-shadow: 0 4px 10px rgb(0,0,0,0.4);
-}
-
-/* NAV */
+/* ================================
+   NAV
+================================ */
 .nav {
   position: fixed;
   top: 20px;
@@ -79,7 +61,9 @@ body {
   font-size: 1rem;
 }
 
-/* SECTIONS */
+/* ================================
+   SECTIONS (BASE)
+================================ */
 .section {
   min-height: 100vh;
   padding: 80px 10%;
@@ -89,6 +73,7 @@ body {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
+  border-radius: 14px;
 }
 
 .section.show {
@@ -96,7 +81,21 @@ body {
   transform: translateY(0);
 }
 
-/* ABOUT */
+/* ================================
+   GLASS EFFECT (TOGGLED)
+================================ */
+.glass-enabled .section,
+.glass-enabled .card,
+.glass-enabled .project-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgb(0, 0, 0, 0.25);
+}
+
+/* ================================
+   ABOUT
+================================ */
 #about h1 {
   margin-bottom: 20px;
   font-size: 3rem;
@@ -106,16 +105,14 @@ body {
   color: var(--accent);
 }
 
-.project-card p {
-  color: var(--muted);
-}
-
 #about p {
   max-width: 600px;
   color: var(--muted);
 }
 
-/* PROJECTS */
+/* ================================
+   PROJECTS
+================================ */
 #projects h2,
 #contact h2 {
   margin-bottom: 40px;
@@ -136,18 +133,22 @@ body {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.project-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 20px 40px rgb(0, 255, 153, 0.0015);
-}
-
 .project-card h3 {
   margin-bottom: 10px;
 }
 
+.project-card p {
+  color: var(--muted);
+}
 
+.project-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgb(0, 255, 153, 0.15);
+}
 
-/* CONTACT */
+/* ================================
+   CONTACT
+================================ */
 .contact-link {
   margin-top: 20px;
   font-size: 1.2rem;
@@ -155,10 +156,46 @@ body {
   text-decoration: none;
 }
 
+/* ================================
+   BUTTONS
+================================ */
+#bg-toggle,
+#bg-gradient-toggle,
+#glass-toggle {
+  position: fixed;
+  right: 20px;
+  padding: 10px 14px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  background: rgb(255, 255, 255, 0.12);
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
 
+#bg-toggle {
+  bottom: 80px;
+}
 
+#bg-gradient-toggle {
+  bottom: 140px;
+  box-shadow: 0 0 12px rgb(255, 255, 255, 0.35);
+}
 
+#glass-toggle {
+  bottom: 200px;
+}
 
+/* ================================
+   BUTTON GLOW SYNC
+================================ */
+.glass-enabled #glass-toggle {
+  box-shadow: 0 0 14px rgb(173, 216, 230, 0.6);
+}
 
-
-
+#bg-toggle:hover,
+#bg-gradient-toggle:hover,
+#glass-toggle:hover {
+  transform: scale(1.1);
+}
