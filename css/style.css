@@ -16,10 +16,26 @@ html {
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.4s ease, color 0.4s ease;
   font-family: Inter, sans-serif;
   line-height: 1.6;
+}
+
+/* Button styling */
+#bgToggle {
+  position: fixed;
+  bottom: 80px; /* adjust if needed */
+  right: 20px;
+  padding: 10px 14px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  background: #222;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
 /* NAV */
@@ -126,6 +142,7 @@ body {
   color: var(--accent);
   text-decoration: none;
 }
+
 
 
 
