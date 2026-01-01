@@ -15,7 +15,7 @@ const observer = new IntersectionObserver(
 sections.forEach(section => observer.observe(section));
 
 // Accent color toggle
-const themeBtn = document.getElementById("themeBtn");
+const themeBtn = document.getElementById("theme-btn");
 let isGreen = true;
 
 themeBtn.addEventListener("click", () => {
@@ -25,3 +25,4 @@ themeBtn.addEventListener("click", () => {
   );
   isGreen = !isGreen;
 });
+
