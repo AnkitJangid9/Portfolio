@@ -1,11 +1,27 @@
+// Section reveal animation
 const sections = document.querySelectorAll(".section");
 
-window.addEventListener("scroll", () => {
-  sections.forEach(section => {
-    const rect = section.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      section.style.opacity = 1;
-      section.style.transform = "translateY(0)";
-    }
-  });
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+sections.forEach(section => observer.observe(section));
+
+// Accent color toggle
+const themeBtn = document.getElementById("themeBtn");
+let isGreen = true;
+
+themeBtn.addEventListener("click", () => {
+  document.documentElement.style.setProperty(
+    "--accent",
+    isGreen ? "#ff6b6b" : "#00ff99"
+  );
+  isGreen = !isGreen;
 });
