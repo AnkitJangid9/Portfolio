@@ -96,6 +96,7 @@ body {
   100 {
     transform: translateY(0px);
   }
+}
 
 .project-card {
   padding: 30px;
@@ -215,6 +216,7 @@ body {
 #glass-toggle:hover {
   transform: scale(1.1);
 }
+
 
 
 
