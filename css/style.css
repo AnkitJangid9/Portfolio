@@ -24,7 +24,7 @@ body {
 }
 
 /* Button styling */
-#bgToggle {
+#bg-toggle {
   position: fixed;
   bottom: 80px; /* adjust if needed */
   right: 20px;
@@ -142,6 +142,7 @@ body {
   color: var(--accent);
   text-decoration: none;
 }
+
 
 
 
