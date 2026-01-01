@@ -1,4 +1,6 @@
-// Section reveal animation
+/* =========================
+   Section Reveal Animation
+========================= */
 const sections = document.querySelectorAll(".section");
 
 const observer = new IntersectionObserver(
@@ -14,47 +16,79 @@ const observer = new IntersectionObserver(
 
 sections.forEach(section => observer.observe(section));
 
-// Accent color toggle
+/* =========================
+   Accent Color Toggle 🎨
+========================= */
 const themeBtn = document.getElementById("theme-btn");
 let isGreen = true;
 
-themeBtn.addEventListener("click", () => {
-  document.documentElement.style.setProperty(
-    "--accent",
-    isGreen ? "#ff6b6b" : "#00ff99"
-  );
-  isGreen = !isGreen;
-});
+if (themeBtn) {
+  themeBtn.addEventListener("click", () => {
+    document.documentElement.style.setProperty(
+      "--accent",
+      isGreen ? "#ff6b6b" : "#00ff99"
+    );
+    isGreen = !isGreen;
+  });
+}
 
-// Background color toggle
-const bgThemes = [
-  { bg: "#000000", text: "#ffffff" }, // Black
-  { bg: "#ffffff", text: "#000000" }, // White
-  { bg: "#0f172a", text: "#e5e7eb" }, // Dark Blue
-  { bg: "#1b4332", text: "#d8f3dc" }, // Green
-  { bg: "#3a0ca3", text: "#f1f1f1" }, // Purple
-  { bg: "#ffedd5", text: "#1f2937" }  // Light
+/* =========================
+   Gradient Background Toggle 🌈
+========================= */
+const gradientThemes = [
+  {
+    gradient: "linear-gradient(135deg, #020617, #0f172a)",
+    text: "#e5e7eb",
+    glass: "rgba(255,255,255,0.08)"
+  },
+  {
+    gradient: "linear-gradient(135deg, #052e16, #14532d)",
+    text: "#dcfce7",
+    glass: "rgba(255,255,255,0.10)"
+  },
+  {
+    gradient: "linear-gradient(135deg, #2e1065, #3a0ca3)",
+    text: "#f5f3ff",
+    glass: "rgba(255,255,255,0.12)"
+  },
+  {
+    gradient: "linear-gradient(135deg, #ffedd5, #fed7aa)",
+    text: "#1f2937",
+    glass: "rgba(255,255,255,0.45)"
+  }
 ];
 
-let currentTheme = 0;
+let gradientIndex = 0;
+const gradientBtn = document.getElementById("bg-gradient-toggle");
 
-const bgToggleBtn = document.getElementById("bg-toggle");
-
-if (bgToggleBtn) {
-  bgToggleBtn.addEventListener("click", () => {
-    currentTheme = (currentTheme + 1) % bgThemes.length;
+if (gradientBtn) {
+  gradientBtn.addEventListener("click", () => {
+    gradientIndex = (gradientIndex + 1) % gradientThemes.length;
 
     document.documentElement.style.setProperty(
-      "--bg-color",
-      bgThemes[currentTheme].bg
+      "--bg-gradient",
+      gradientThemes[gradientIndex].gradient
     );
 
     document.documentElement.style.setProperty(
       "--text-color",
-      bgThemes[currentTheme].text
+      gradientThemes[gradientIndex].text
+    );
+
+    document.documentElement.style.setProperty(
+      "--glass-bg",
+      gradientThemes[gradientIndex].glass
     );
   });
 }
 
+/* =========================
+   Glass Effect Toggle 🧊
+========================= */
+const glassBtn = document.getElementById("glass-toggle");
 
-
+if (glassBtn) {
+  glassBtn.addEventListener("click", () => {
+    document.body.classList.toggle("glass-enabled");
+  });
+}
