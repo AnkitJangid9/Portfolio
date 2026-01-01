@@ -10,38 +10,37 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  pull-requests: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
 jobs:
   ci:
-    name: CI - Lint HTML & CSS
+    name: CI - HTML & CSS Lint
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      # 1️⃣ Checkout your code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Setup Node (required for linters)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
+      # 3️⃣ Install linters  ← ADD HERE
       - name: Install linters
         run: |
           npm install -g htmlhint stylelint stylelint-config-standard
 
+      # 4️⃣ Run HTML lint
       - name: Run HTML lint
-        run: |
-          htmlhint "**/*.html"
+        run: htmlhint "**/*.html"
 
+      # 5️⃣ Run CSS lint
       - name: Run CSS lint
-        run: |
-          stylelint "**/*.css"
+        run: stylelint "**/*.css"
 
+      # 6️⃣ Upload site for deployment
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -50,7 +49,6 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: ci
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
