@@ -33,7 +33,7 @@ jobs:
           npm install -g htmlhint stylelint stylelint-config-standard
 
       # 4️⃣ Run HTML lint
-      - name: Run HTML lint
+      - name:  Run HTML lint
         run: htmlhint "**/*.html"
 
       # 5️⃣ Run CSS lint
