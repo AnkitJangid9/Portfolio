@@ -39,22 +39,22 @@ const gradientThemes = [
   {
     gradient: "linear-gradient(135deg, #020617, #0f172a)",
     text: "#e5e7eb",
-    glass: "rgba(255,255,255,0.08)"
+    glass: "rgb(255,255,255,0.08)"
   },
   {
     gradient: "linear-gradient(135deg, #052e16, #14532d)",
     text: "#dcfce7",
-    glass: "rgba(255,255,255,0.10)"
+    glass: "rgb(255,255,255,0.10)"
   },
   {
     gradient: "linear-gradient(135deg, #2e1065, #3a0ca3)",
     text: "#f5f3ff",
-    glass: "rgba(255,255,255,0.12)"
+    glass: "rgb(255,255,255,0.12)"
   },
   {
     gradient: "linear-gradient(135deg, #ffedd5, #fed7aa)",
     text: "#1f2937",
-    glass: "rgba(255,255,255,0.45)"
+    glass: "rgb(255,255,255,0.45)"
   }
 ];
 
