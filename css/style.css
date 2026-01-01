@@ -81,6 +81,14 @@ body {
   transform: translateY(0);
 }
 
+.project-card {
+  padding: 30px;
+  background: #121212;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
 /* ================================
    GLASS EFFECT (TOGGLED)
 ================================ */
@@ -105,6 +113,10 @@ body {
   color: var(--accent);
 }
 
+.project-card p {
+  color: var(--muted);
+}
+
 #about p {
   max-width: 600px;
   color: var(--muted);
@@ -125,20 +137,8 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-.project-card {
-  padding: 30px;
-  background: #121212;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
 .project-card h3 {
   margin-bottom: 10px;
-}
-
-.project-card p {
-  color: var(--muted);
 }
 
 .project-card:hover {
@@ -199,3 +199,4 @@ body {
 #glass-toggle:hover {
   transform: scale(1.1);
 }
+
