@@ -1,41 +1,58 @@
-name: Deploy Portfolio to GitHub Pages
+name: CI/CD Portfolio Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 permissions:
   contents: read
   pages: write
   id-token: write
+  pull-requests: write
 
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
-  build:
+  ci:
+    name: CI - Lint HTML & CSS
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Validate HTML files
-        run: |
-          echo "Checking HTML files..."
-          find . -name "*.html"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-      - name: Upload artifact
+      - name: Install linters
+        run: |
+          npm install -g htmlhint stylelint stylelint-config-standard
+
+      - name: Run HTML lint
+        run: |
+          htmlhint "**/*.html"
+
+      - name: Run CSS lint
+        run: |
+          stylelint "**/*.css"
+
+      - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
   deploy:
-    needs: build
+    name: Deploy to GitHub Pages
+    needs: ci
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         uses: actions/deploy-pages@v4
