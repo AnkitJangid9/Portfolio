@@ -35,7 +35,7 @@ body {
   font-size: 18px;
   background: #222;
   color: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 10px rgb(0,0,0,0.4);
 }
 
 /* NAV */
@@ -142,6 +142,7 @@ body {
   color: var(--accent);
   text-decoration: none;
 }
+
 
 
 
