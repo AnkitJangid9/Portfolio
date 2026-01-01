@@ -110,7 +110,7 @@ body {
 
 .project-card:hover {
   transform: translateY(-12px);
-  box-shadow: 0 20px 40px rgba(0, 255, 153, 0.0015);
+  box-shadow: 0 20px 40px rgb(0, 255, 153, 0.0015);
 }
 
 .project-card h3 {
@@ -126,6 +126,7 @@ body {
   color: var(--accent);
   text-decoration: none;
 }
+
 
 
 
