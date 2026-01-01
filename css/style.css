@@ -1,8 +1,8 @@
 :root {
-  --bg: #0e0e0e;
-  --text: #fff;
-  --muted: #a1a1a1;
-  --accent: #0f9;
+  --bg-gradient: linear-gradient(135deg, #000000, #1a1a1a);
+  --text-color: #ffffff;
+  --glass-bg: rgb(255,255,255,0.08);
+  --glass-border: rgb(255,255,255,0.18);
 }
 
 * {
@@ -15,12 +15,24 @@ html {
   scroll-behavior: smooth;
 }
 
+* Background */
 body {
-  background-color: var(--bg-color);
+  background: var(--bg-gradient);
   color: var(--text-color);
-  transition: background-color 0.4s ease, color 0.4s ease;
-  font-family: Inter, sans-serif;
-  line-height: 1.6;
+  transition: background 0.6s ease, color 0.4s ease;
+}
+
+/* Glass effect (disabled by default) */
+.glass-enabled .glass,
+.glass-enabled .card,
+.glass-enabled .section,
+.glass-enabled .project-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgb(0,0,0,0.25);
+  border-radius: 14px;
 }
 
 /* Button styling */
@@ -142,6 +154,7 @@ body {
   color: var(--accent);
   text-decoration: none;
 }
+
 
 
 
