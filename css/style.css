@@ -1,41 +1,90 @@
+:root {
+  --bg: #0e0e0e;
+  --text: #ffffff;
+  --muted: #a1a1a1;
+  --accent: #00ff99;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: #0e0e0e;
-  color: #ffffff;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
   line-height: 1.6;
 }
 
-/* Sections */
+/* NAV */
+.nav {
+  position: fixed;
+  top: 20px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+#themeBtn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* SECTIONS */
 .section {
   min-height: 100vh;
   padding: 80px 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
 }
 
-/* About */
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ABOUT */
 #about h1 {
   font-size: 3rem;
   margin-bottom: 20px;
 }
 
 #about span {
-  color: #00ff99;
+  color: var(--accent);
 }
 
 #about p {
   max-width: 600px;
-  opacity: 0.8;
+  color: var(--muted);
 }
 
-/* Projects */
+/* PROJECTS */
 #projects h2,
 #contact h2 {
   font-size: 2.5rem;
@@ -49,20 +98,30 @@ body {
 }
 
 .project-card {
+  background: #121212;
   padding: 30px;
-  border: 1px solid #333;
-  transition: transform 0.3s ease, border 0.3s ease;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  border-color: #00ff99;
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 255, 153, 0.15);
 }
 
-/* Contact */
+.project-card h3 {
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: var(--muted);
+}
+
+/* CONTACT */
 .contact-link {
   margin-top: 20px;
-  color: #00ff99;
+  color: var(--accent);
   text-decoration: none;
   font-size: 1.2rem;
 }
