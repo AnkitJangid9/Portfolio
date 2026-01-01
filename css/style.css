@@ -62,7 +62,7 @@ body {
 }
 
 /* ================================
-   SECTIONS (BASE)
+   SECTIONS (BASE + ANIMATION)
 ================================ */
 .section {
   min-height: 100vh;
@@ -72,29 +72,28 @@ body {
   justify-content: center;
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.6s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
   border-radius: 14px;
+  will-change: transform;
 }
 
 .section.show {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Live floating animation */
-.section {
-  animation: floatSoft 6s ease-in-out infinite;
+  animation: float-soft 6s ease-in-out infinite;
 }
 
 @keyframes float-soft {
-  0 {
-    transform: translateY(0px);
+  0% {
+    transform: translateY(0);
   }
-  50 {
+
+  50% {
     transform: translateY(-6px);
   }
-  100 {
-    transform: translateY(0px);
+
+  100% {
+    transform: translateY(0);
   }
 }
 
@@ -216,6 +215,7 @@ body {
 #glass-toggle:hover {
   transform: scale(1.1);
 }
+
 
 
 
